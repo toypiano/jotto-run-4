@@ -3,6 +3,11 @@ import { shallow } from "enzyme";
 
 import { findByTestAttr, checkProps } from "../../../test/testUtils";
 import guessWord from "./actions";
+import Guess from "./Guess";
+
+const setup = preloadedState => {
+  return shallow();
+};
 
 describe("render", () => {
   describe("word has not been successfully guessed", () => {
