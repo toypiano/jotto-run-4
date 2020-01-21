@@ -5,4 +5,9 @@
 import "@testing-library/jest-dom/extend-expect";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-configure({ configure: new Adapter() });
+configure({
+  adapter: new Adapter(),
+  // prevent components from calling lifeCycle methods
+  // every time a test runs shallow() on the component
+  disableLifecycleMethods: true
+});
