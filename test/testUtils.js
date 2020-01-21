@@ -1,7 +1,7 @@
 import checkPropTypes from "check-prop-types";
 
 /**
- * Will throw error if expectedProps don't match the set propTypes
+ * Will return error if expectedProps don't match the set propTypes
  * to ensure initial prop types didn't change or give warning if they did.
  * @function checkProps
  * @param {React.Component} component - React component to check prop types
