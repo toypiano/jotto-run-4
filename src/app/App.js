@@ -1,5 +1,7 @@
 import React from "react";
 
+import Congrats from "../features/congrats/Congrats";
+
 function App() {
   return (
     <div className="container d-flex flex-column align-items-center mt-4">
@@ -7,7 +9,7 @@ function App() {
         <h1>Jotto</h1>
       </header>
       <main>
-        <section>Congrats Message</section>
+        <Congrats success={true} />
         <section>
           guessForm
           <div>guess input</div>
