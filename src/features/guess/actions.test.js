@@ -1,5 +1,6 @@
 import { guessWord } from "./actions";
 import { storeFactory } from "../../../test/testUtils";
+import secretWordReducer from "../../app/secretWordReducer";
 /* 
 Thunked action creators integration test checks whether the action creator dispatches the correct actions to the store and the reducer takes that action to update the state as expected.
 
@@ -32,10 +33,56 @@ describe("guessWord action dispatcher", () => {
       };
       expect(newState).toEqual(expectedState);
     });
-    test("updates state correctly for successful guess", () => {});
+    test("updates state correctly for successful guess", () => {
+      store.dispatch(guessWord(secretWord));
+      const newState = store.getState();
+      const expectedState = {
+        ...preloadedState,
+        success: true,
+        guessedWords: [
+          { guessedWord: secretWord, letterMatchCount: 5 }
+        ]
+      };
+      expect(newState).toEqual(expectedState);
+    });
   });
   describe("there are some previously guessed words", () => {
-    test("updates state correctly or unsuccessful guess", () => {});
-    test("updates state correctly for successful guess", () => {});
+    const guessedWords = [
+      { guessedWord: "drums", letterMatchCount: 0 }
+    ];
+    const preloadedState = {
+      guessedWords,
+      secretWord
+    };
+    let store;
+    beforeEach(() => {
+      store = storeFactory(preloadedState);
+    });
+    test("updates state correctly for unsuccessful guess", () => {
+      store.dispatch(guessWord(incorrectGuessedWord));
+      const newState = store.getState();
+      const expectedState = {
+        ...preloadedState,
+        success: false,
+        guessedWords: [
+          ...guessedWords,
+          { guessedWord: incorrectGuessedWord, letterMatchCount: 2 }
+        ]
+      };
+      expect(newState).toEqual(expectedState);
+    });
+    test("updates state correctly for successful guess", () => {
+      store.dispatch(guessWord(secretWord));
+      const newState = store.getState();
+      const expectedState = {
+        ...preloadedState,
+        success: true,
+        guessedWords: [
+          ...guessedWords,
+          { guessedWord: secretWord, letterMatchCount: 5 }
+        ]
+      };
+      expect(newState).toEqual(expectedState);
+    });
   });
 });
