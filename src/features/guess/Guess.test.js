@@ -8,6 +8,7 @@ import {
 } from "../../../test/testUtils";
 import guessWord from "./actions";
 import GuessContainer from "./GuessContainer";
+import Guess from "./Guess";
 
 /**
  * Factory function to create a ShallowWrapper for the Guess component
@@ -62,6 +63,12 @@ describe("render", () => {
       expect(submitButton.length).toBe(0);
     });
   });
+});
+
+test("does not throw warning with expected props", () => {
+  const expectedProps = { success: false };
+  const error = checkProps(Guess, expectedProps);
+  expect(error).toBe(undefined);
 });
 
 describe("redux props", () => {

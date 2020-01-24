@@ -1,6 +1,7 @@
 import React from "react";
 
 import Congrats from "../features/congrats/Congrats";
+import GuessContainer from "../features/guess/GuessContainer";
 
 function App() {
   return (
@@ -10,12 +11,7 @@ function App() {
       </header>
       <main>
         <Congrats success={true} />
-        <section>
-          guessForm
-          <div>guess input</div>
-          <div>Submit Button</div>
-          <p>Guess the secretWord!</p>
-        </section>
+        <GuessContainer />
         <section>
           guessed words table
           <table>

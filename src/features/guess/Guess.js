@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class Guess extends Component {
   state = {
@@ -15,7 +15,10 @@ class Guess extends Component {
           id="word"
           className="form-control"
         />
-        <button data-test="submit-button" className="btn btn-primary">
+        <button
+          data-test="submit-button"
+          className="btn btn-primary mt-2"
+        >
           Submit
         </button>
       </form>
@@ -24,6 +27,8 @@ class Guess extends Component {
   }
 }
 
-Guess.propTypes = {};
+Guess.propTypes = {
+  success: PropTypes.bool.isRequired
+};
 
 export default Guess;
