@@ -7,15 +7,20 @@ class Guess extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <form>
-          <label>Guess the secret word!</label>
-          <input />
-          <button>Submit</button>
-        </form>
-      </div>
+    const form = this.props.success ? null : (
+      <form className="form-group">
+        <label for="word">Guess the secret word!</label>
+        <input
+          data-test="input-control"
+          id="word"
+          className="form-control"
+        />
+        <button data-test="submit-button" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
     );
+    return <div data-test="component-guess">{form}</div>;
   }
 }
 

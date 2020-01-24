@@ -4,8 +4,13 @@ import { shallow } from "enzyme";
 import { findByTestAttr, checkProps } from "../../../test/testUtils";
 import Congrats from "./Congrats";
 
+const requiredProps = {
+  success: false
+};
+
 const setup = (props = {}) => {
-  return shallow(<Congrats {...props} />);
+  const setupProps = { ...requiredProps, ...props };
+  return shallow(<Congrats {...setupProps} />);
 };
 
 describe("render", () => {
