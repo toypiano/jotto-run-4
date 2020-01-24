@@ -14,6 +14,9 @@ Steps
 describe("guessWord action dispatcher", () => {
   const incorrectGuessedWord = "bongo";
   const secretWord = "piano";
+  const moreProps = {
+    serverError: false
+  };
 
   describe("no previously guessed word(first submit)", () => {
     let store;
@@ -25,6 +28,7 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(incorrectGuessedWord));
       const newState = store.getState();
       const expectedState = {
+        ...moreProps,
         ...preloadedState,
         success: false,
         guessedWords: [
@@ -38,6 +42,7 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(secretWord), () => {
         const newState = store.getState();
         const expectedState = {
+          ...moreProps,
           ...preloadedState,
           success: true,
           guessedWords: [
@@ -64,6 +69,7 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(incorrectGuessedWord));
       const newState = store.getState();
       const expectedState = {
+        ...moreProps,
         ...preloadedState,
         success: false,
         guessedWords: [
@@ -77,6 +83,7 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(secretWord), () => {
         const newState = store.getState();
         const expectedState = {
+          ...moreProps,
           ...preloadedState,
           success: true,
           guessedWords: [
