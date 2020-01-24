@@ -23,7 +23,7 @@ class Guess extends Component {
         data-test="guess-form"
         onSubmit={this.handleSubmit}
       >
-        <label for="word">Guess the secret word!</label>
+        <label>Guess the secret word!</label>
         <input
           data-test="input-control"
           id="word"
