@@ -71,9 +71,19 @@ test("does not throw warning with expected props", () => {
   expect(error).toBe(undefined);
 });
 
+// test whether the container receives specified prop
 describe("redux props", () => {
-  test("has success piece of state as prop", () => {});
-  test("'guessWord' action creator is a function prop", () => {});
+  test("has success piece of state as prop", () => {
+    const success = true; // arbitrary value. could be false.
+    const wrapper = setup({ success }); // create wrapper setting success value to true. (success prop must exist in store via reducer)
+    const successProp = wrapper.instance().props.success;
+    expect(successProp).toBe(true);
+  });
+  test("'guessWord' action creator is a function prop", () => {
+    const wrapper = setup();
+    const guessWordProp = wrapper.instance().props.guessWord;
+    expect(guessWordProp).toBeInstanceOf(Function);
+  });
 });
 
 describe("'guessWord' action creator call", () => {
