@@ -1,13 +1,37 @@
+import { guessWord } from "./actions";
+import { storeFactory } from "../../../test/testUtils";
 /* 
-Integration test creates a new redux store instance with optional preloaded state.
-Then in each test, it dispatches an action creator and gets new state from the store.
-If the new state updated by the reducer matches expected state, the test passes.
+Thunked action creators integration test checks whether the action creator dispatches the correct actions to the store and the reducer takes that action to update the state as expected.
+
+Steps
+1. Create a new redux store instance with optional preloaded state.
+2. Dispatch an action creator and get new state from the store.
+3. Expect whether the updated state matches expected state.
 */
 
 // Integration test for guessWord
 describe("guessWord action dispatcher", () => {
+  const incorrectGuessedWord = "bongo";
+  const secretWord = "piano";
+
   describe("no previously guessed word(first submit)", () => {
-    test("updates state correctly or unsuccessful guess", () => {});
+    let store;
+    const preloadedState = { secretWord };
+    beforeEach(() => {
+      store = storeFactory(preloadedState);
+    });
+    test("updates state correctly for unsuccessful guess", () => {
+      store.dispatch(guessWord(incorrectGuessedWord));
+      const newState = store.getState();
+      const expectedState = {
+        ...preloadedState,
+        success: false,
+        guessedWords: [
+          { guessedWord: incorrectGuessedWord, letterMatchCount: 2 }
+        ]
+      };
+      expect(newState).toEqual(expectedState);
+    });
     test("updates state correctly for successful guess", () => {});
   });
   describe("there are some previously guessed words", () => {
