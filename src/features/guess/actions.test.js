@@ -1,6 +1,6 @@
 import { guessWord } from "./actions";
 import { storeFactory } from "../../../test/testUtils";
-import secretWordReducer from "../../app/secretWordReducer";
+
 /* 
 Thunked action creators integration test checks whether the action creator dispatches the correct actions to the store and the reducer takes that action to update the state as expected.
 
