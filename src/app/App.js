@@ -4,6 +4,9 @@ import Congrats from "../features/congrats/Congrats";
 import GuessContainer from "../features/guess/GuessContainer";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchSecretWord();
+  }
   render() {
     return (
       <div className="container d-flex flex-column align-items-center mt-4">
@@ -11,7 +14,7 @@ class App extends Component {
           <h1>Jotto</h1>
         </header>
         <main>
-          <Congrats success={true} />
+          <Congrats success={this.props.success} />
           <GuessContainer />
           <section>
             guessed words table
