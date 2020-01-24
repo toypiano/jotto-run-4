@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./app/App";
+import AppContainer from "./app/AppContainer";
 import * as serviceWorker from "./serviceWorker";
 import store from "./app/store";
 import { Provider } from "react-redux";
 
 const app = (
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>
 );
 
