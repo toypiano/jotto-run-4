@@ -34,16 +34,18 @@ describe("guessWord action dispatcher", () => {
       expect(newState).toEqual(expectedState);
     });
     test("updates state correctly for successful guess", () => {
-      store.dispatch(guessWord(secretWord));
-      const newState = store.getState();
-      const expectedState = {
-        ...preloadedState,
-        success: true,
-        guessedWords: [
-          { guessedWord: secretWord, letterMatchCount: 5 }
-        ]
-      };
-      expect(newState).toEqual(expectedState);
+      // MUST expect inside async callback for getState to work correctly.
+      store.dispatch(guessWord(secretWord), () => {
+        const newState = store.getState();
+        const expectedState = {
+          ...preloadedState,
+          success: true,
+          guessedWords: [
+            { guessedWord: secretWord, letterMatchCount: 5 }
+          ]
+        };
+        expect(newState).toEqual(expectedState);
+      });
     });
   });
   describe("there are some previously guessed words", () => {
@@ -72,17 +74,18 @@ describe("guessWord action dispatcher", () => {
       expect(newState).toEqual(expectedState);
     });
     test("updates state correctly for successful guess", () => {
-      store.dispatch(guessWord(secretWord));
-      const newState = store.getState();
-      const expectedState = {
-        ...preloadedState,
-        success: true,
-        guessedWords: [
-          ...guessedWords,
-          { guessedWord: secretWord, letterMatchCount: 5 }
-        ]
-      };
-      expect(newState).toEqual(expectedState);
+      store.dispatch(guessWord(secretWord), () => {
+        const newState = store.getState();
+        const expectedState = {
+          ...preloadedState,
+          success: true,
+          guessedWords: [
+            ...guessedWords,
+            { guessedWord: secretWord, letterMatchCount: 5 }
+          ]
+        };
+        expect(newState).toEqual(expectedState);
+      });
     });
   });
 });
