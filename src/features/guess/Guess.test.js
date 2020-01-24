@@ -87,7 +87,30 @@ describe("redux props", () => {
 });
 
 describe("'guessWord' action creator call", () => {
-  test("'guessWord' action creator runs on form submit", () => {});
-  test("calls 'guessWord' with input value as argument", () => {});
-  test("clears input control value upon submit", () => {});
+  let wrapper, guessWordSpy;
+  const guessedWord = "piano";
+  const requiredProps = { success: false };
+
+  beforeEach(() => {
+    guessWordSpy = jest.fn();
+    wrapper = shallow(
+      <Guess {...requiredProps} guessWord={guessWordSpy} />
+    );
+    wrapper.setState({ inputValue: guessedWord }); // simulate input
+    const guessForm = findByTestAttr(wrapper, "guess-form");
+    // 2nd arg: mock event to pass into event handler callbacks
+    guessForm.simulate("submit", { preventDefault: () => {} }); // simulate submit
+  });
+  test("'guessWord' action creator runs on form submit", () => {
+    const guessWordCallCount = guessWordSpy.mock.calls.length;
+    expect(guessWordCallCount).toBe(1);
+  });
+  test("calls 'guessWord' with input value as argument", () => {
+    const guessWordArg = guessWordSpy.mock.calls[0][0]; // 1st call, 1st arg
+    expect(guessWordArg).toBe(guessedWord);
+  });
+  test("clears input control value upon submit", () => {
+    const inputValue = wrapper.state("inputValue");
+    expect(inputValue).toBe("");
+  });
 });

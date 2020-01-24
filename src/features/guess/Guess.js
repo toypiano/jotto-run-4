@@ -8,7 +8,7 @@ class Guess extends Component {
 
   render() {
     const form = this.props.success ? null : (
-      <form className="form-group">
+      <form className="form-group" data-test="guess-form">
         <label for="word">Guess the secret word!</label>
         <input
           data-test="input-control"
