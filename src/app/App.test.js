@@ -17,7 +17,8 @@ const setup = preloadedState => {
 describe("redux props", () => {
   let wrapper;
   const preloadedState = {
-    success: true
+    success: true,
+    guessedWords: []
   };
   beforeEach(() => {
     wrapper = setup(preloadedState);
@@ -31,13 +32,18 @@ describe("redux props", () => {
       .fetchSecretWord;
     expect(fetchSecretWordProp).toBeInstanceOf(Function);
   });
+  test("has access to 'guessedWords' state", () => {
+    const guessedWordsProp = wrapper.instance().props.guessedWords;
+    expect(guessedWordsProp).toEqual([]);
+  });
 });
 
 // To test function calls, we need to wrap unconnected component
 test("'fetchSecretWord' runs on App mount", () => {
   const fetchSecretWordMock = jest.fn();
   const props = {
-    success: false
+    success: false,
+    guessedWords: []
   };
   const wrapper = shallow(
     <App {...props} fetchSecretWord={fetchSecretWordMock} />
