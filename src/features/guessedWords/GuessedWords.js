@@ -6,7 +6,7 @@ const GuessedWords = props => {
     return (
       <tr key={v.guessedWord + i}>
         <td>{v.guessedWord}</td>
-        <id>{v.letterMatchingCount}</id>
+        <td>{v.letterMatchCount}</td>
       </tr>
     );
   });
@@ -15,8 +15,8 @@ const GuessedWords = props => {
     <table className="table table-sm">
       <thead className="thead-light">
         <tr>
-          <td>Guess</td>
-          <td>Matching Letters</td>
+          <th>Guess</th>
+          <th>Matching Letters</th>
         </tr>
       </thead>
       <tbody>{guessedWordRows}</tbody>
