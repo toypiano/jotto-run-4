@@ -1,9 +1,8 @@
-import { getLetterMatchCount } from "../../common/utils/";
+import { getLetterMatchCount } from "../../common/utils";
 
-export const actionTypes = {
-  GUESS_SUBMITTED: "guess/guessSubmitted",
-  GUESS_SUCCESS: "guess/guessSuccess"
-};
+// action types
+export const GUESS_SUBMITTED = "guess/guessSubmitted";
+export const GUESS_SUCCESS = "guess/guessSuccess";
 
 /**
  * Returns Redux Thunk function that dispatches GUESS_SUBMITTED action
@@ -21,7 +20,7 @@ export const guessWord = guessedWord => {
       guessedWord
     );
     dispatch({
-      type: actionTypes.GUESS_SUBMITTED,
+      type: GUESS_SUBMITTED,
       guessedWord: {
         guessedWord,
         letterMatchCount
@@ -29,7 +28,7 @@ export const guessWord = guessedWord => {
     });
     if (secretWord === guessedWord) {
       dispatch({
-        type: actionTypes.GUESS_SUCCESS
+        type: GUESS_SUCCESS
       });
     }
   };

@@ -1,9 +1,8 @@
 import axios from "axios";
 
-export const actionTypes = {
-  FETCH_WORD_SUCCESS: "app/fetchWordSuccess",
-  FETCH_WORD_FAIL: "app/fetchWordFail"
-};
+// action types
+export const FETCH_WORD_SUCCESS = "app/fetchWordSuccess";
+export const FETCH_WORD_FAIL = "app/fetchWordFail";
 
 /**
  * Returns Redux thunk function that dispatches FETCH_WORD_SUCCESS
@@ -17,13 +16,13 @@ export const fetchSecretWord = () => {
       .get("http://localhost:3030")
       .then(res => {
         dispatch({
-          type: actionTypes.FETCH_WORD_SUCCESS,
+          type: FETCH_WORD_SUCCESS,
           secretWord: res.data
         });
       })
       .catch(err => {
         dispatch({
-          type: actionTypes.FETCH_WORD_FAIL,
+          type: FETCH_WORD_FAIL,
           error: err
         });
       });

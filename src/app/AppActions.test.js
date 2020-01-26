@@ -1,7 +1,7 @@
 import moxios from "moxios";
 
 import { storeFactory } from "../../test/testUtils";
-import { fetchSecretWord } from "./actions";
+import { fetchSecretWord } from "./AppActions";
 
 describe("fetchSecretWord thunk action creator", () => {
   beforeEach(() => {

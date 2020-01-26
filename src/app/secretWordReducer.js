@@ -1,8 +1,8 @@
-import { actionTypes } from "./actions";
+import { FETCH_WORD_SUCCESS } from "./AppActions";
 
 const secretWordReducer = (state = "", action) => {
   switch (action.type) {
-    case actionTypes.FETCH_WORD_SUCCESS:
+    case FETCH_WORD_SUCCESS:
       return action.secretWord;
     default:
       return state;

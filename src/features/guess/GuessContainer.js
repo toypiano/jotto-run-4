@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { guessWord } from "./actions";
+import { guessWord } from "./GuessActions";
 import Guess from "./Guess";
 
 const mapState = ({ success }) => ({ success });

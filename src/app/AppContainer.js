@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import App from "./App";
-import { fetchSecretWord } from "./actions";
+import { fetchSecretWord } from "./AppActions";
 
 const mapState = ({ success, guessedWords }) => ({
   success,

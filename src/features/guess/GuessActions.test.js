@@ -1,4 +1,4 @@
-import { guessWord } from "./actions";
+import { guessWord } from "./GuessActions";
 import { storeFactory } from "../../../test/testUtils";
 
 /* 

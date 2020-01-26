@@ -6,7 +6,7 @@ import {
   checkProps,
   storeFactory
 } from "../../../test/testUtils";
-import guessWord from "./actions";
+import guessWord from "./GuessActions";
 import GuessContainer from "./GuessContainer";
 import Guess from "./Guess";
 
