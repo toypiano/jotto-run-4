@@ -1,6 +1,6 @@
 import { fetchSecretWord } from "../../app/AppActions";
 
-export const GAME_RESET = "newWord/getReset";
+export const GAME_RESET = "newWord/gameReset";
 
 export const resetGame = () => {
   return dispatch => {

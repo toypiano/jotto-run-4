@@ -9,6 +9,7 @@ const NewWord = props => {
           data-test="new-word-button"
           type="button"
           onClick={props.getNewWord}
+          className="btn btn-success mb-2"
         >
           New Word
         </button>
