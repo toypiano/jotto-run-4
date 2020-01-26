@@ -2,7 +2,7 @@
 
 React TDD with jest and enzyme
 
-## Lessons from this run
+## Lessons
 
 - Export actionTypes individually. This makes it easier to import actionTypes from different `FeatureActions.js` file.
 
