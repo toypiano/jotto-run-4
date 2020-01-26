@@ -44,4 +44,6 @@ test("calls 'getNewWord' prop upon button click", () => {
     getNewWord: getNewWordMock
   });
   const newWordButton = findByTestAttr(wrapper, "new-word-button");
+  newWordButton.simulate("click");
+  expect(getNewWordMock.mock.calls.length).toBe(1);
 });
