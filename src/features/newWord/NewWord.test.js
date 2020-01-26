@@ -32,7 +32,7 @@ describe("render", () => {
 });
 
 test("does not throw warning with expected props", () => {
-  const expectedProps = { display: false, getNewWord: () => {} };
+  const expectedProps = { show: false, getNewWord: () => {} };
   const error = checkProps(NewWord, expectedProps);
   expect(error).toBe(undefined);
 });

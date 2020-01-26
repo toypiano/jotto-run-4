@@ -1,9 +1,25 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const NewWord = props => {
-  return <div></div>;
+  return (
+    <div data-test="component-new-word">
+      {props.show && (
+        <button
+          data-test="new-word-button"
+          type="button"
+          onClick={props.getNewWord}
+        >
+          New Word
+        </button>
+      )}
+    </div>
+  );
 };
 
-NewWord.propTypes = {};
+NewWord.propTypes = {
+  show: PropTypes.bool.isRequired,
+  getNewWord: PropTypes.func
+};
 
 export default NewWord;
