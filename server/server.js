@@ -4,6 +4,7 @@ const app = require("express")();
 const cors = require("cors");
 const fs = require("fs");
 
+// Allow all cors
 app.use(cors());
 
 // read json, parse to obj, and destructure into array
