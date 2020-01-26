@@ -8,7 +8,7 @@ import rootReducer from "../src/app/rootReducer";
  * Will return error if expectedProps don't match the set propTypes
  * to ensure initial prop types didn't change or give warning if they did.
  * @function checkProps
- * @param {React.Component} component - React component to check prop types
+ * @param {Object} component - React component to check prop types
  * @param {Object} expectedProps - props conforming to the set propTypes
  * @returns {Error}
  */
@@ -24,9 +24,9 @@ export const checkProps = (component, expectedProps) => {
 
 /**
  * Return node(s) with the given data-test attribute.
- * @param {ShallowWrapper} wrapper - Enzyme shallow wrapper
+ * @param {Object} wrapper - Enzyme shallow wrapper
  * @param {string} val - Value of data-test attribute to match
- * @returns {ShallowWrapper}
+ * @returns {Object} - Enzyme shallow wrapper around the queried React component.
  */
 export const findByTestAttr = (wrapper, val) => {
   return wrapper.find(`[data-test="${val}"]`);
@@ -44,7 +44,7 @@ Invariant Violation: Could not find "store" in the context of "Connect(Guess)". 
  * Create a testing store with imported reducers, middleware, and preloaded state.
  * @function storeFactory
  * @param {Object} preloadedState - preloaded state for store.
- * @returns {Store} - Redux store.
+ * @returns {Object} - Redux store.
  */
 export const storeFactory = preloadedState => {
   return createStore(
