@@ -1,6 +1,7 @@
 import { storeFactory } from "../../../test/testUtils";
 import { resetGame } from "./NewWordActions";
 import moxios from "moxios";
+import axios from "axios";
 
 describe("'resetGame' action dispatcher", () => {
   let store, newState;
@@ -15,12 +16,12 @@ describe("'resetGame' action dispatcher", () => {
     success
   };
   beforeEach(() => {
-    moxios.install();
+    moxios.install(axios);
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response: "conga"
+        response: { word: "conga" }
       });
     });
     store = storeFactory(preloadedState);
@@ -29,7 +30,7 @@ describe("'resetGame' action dispatcher", () => {
     });
   });
   afterEach(() => {
-    moxios.uninstall();
+    moxios.uninstall(axios);
   });
   // calling resetGame with button click is already in unit test.
   test("updates 'secretWord' state correctly upon execution", () => {

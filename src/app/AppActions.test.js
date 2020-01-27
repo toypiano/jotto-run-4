@@ -1,14 +1,15 @@
 import moxios from "moxios";
+import axios from "axios";
 
 import { storeFactory } from "../../test/testUtils";
 import { fetchSecretWord } from "./AppActions";
 
 describe("fetchSecretWord thunk action creator", () => {
   beforeEach(() => {
-    moxios.install();
+    moxios.install(axios);
   });
   afterEach(() => {
-    moxios.uninstall();
+    moxios.uninstall(axios);
   });
   test("update secretWord state with fetched word", () => {
     const secretWord = "piano";
@@ -18,7 +19,7 @@ describe("fetchSecretWord thunk action creator", () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response: secretWord
+        response: { word: secretWord }
       });
     });
     return store.dispatch(fetchSecretWord()).then(() => {
