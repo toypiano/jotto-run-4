@@ -43,6 +43,10 @@ describe("render", () => {
       const submitButton = findByTestAttr(wrapper, "submit-button");
       expect(submitButton.length).toBe(1);
     });
+    test("renders 'give up' button", () => {
+      const giveUpButton = findByTestAttr(wrapper, "give-up-button");
+      expect(giveUpButton.length).toBe(1);
+    });
   });
 
   describe("word has been successfully guessed", () => {
@@ -61,6 +65,10 @@ describe("render", () => {
     test("does not render submit button", () => {
       const submitButton = findByTestAttr(wrapper, "submit-button");
       expect(submitButton.length).toBe(0);
+    });
+    test("does not render 'give up' button", () => {
+      const giveUpButton = findByTestAttr(wrapper, "give-up-button");
+      expect(giveUpButton.length).toBe(0);
     });
   });
 });
@@ -83,6 +91,11 @@ describe("redux props", () => {
     const wrapper = setup();
     const guessWordProp = wrapper.instance().props.guessWord;
     expect(guessWordProp).toBeInstanceOf(Function);
+  });
+  test("'giveUp' action creator is a function prop", () => {
+    const wrapper = setup();
+    const giveUpProp = wrapper.instance().props.guessWord;
+    expect(giveUpProp).toBeInstanceOf(Function);
   });
 });
 
@@ -112,5 +125,24 @@ describe("'guessWord' action creator call", () => {
   test("clears input control value upon submit", () => {
     const inputValue = wrapper.state("inputValue");
     expect(inputValue).toBe("");
+  });
+});
+
+describe("'giveUp' action creator call", () => {
+  let wrapper, giveUpMock;
+  const requiredProps = {
+    success: false
+  };
+  beforeEach(() => {
+    giveUpMock = jest.fn();
+    wrapper = shallow(
+      <Guess {...requiredProps} giveUp={giveUpMock} />
+    );
+    const giveUpButton = findByTestAttr(wrapper, "give-up-button");
+    giveUpButton.simulate("click");
+  });
+  test("'giveUp' action creator runs when 'Give up' button is clicked", () => {
+    const giveUpCallCount = giveUpMock.mock.calls[0][0];
+    expect(giveUpCallCount).toBe(1);
   });
 });
