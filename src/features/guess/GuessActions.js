@@ -33,3 +33,7 @@ export const guessWord = guessedWord => {
     }
   };
 };
+
+export const giveUp = () => {
+  return {};
+};

@@ -1,4 +1,4 @@
-import { guessWord } from "./GuessActions";
+import { guessWord, giveUp } from "./GuessActions";
 import { storeFactory } from "../../../test/testUtils";
 
 /* 
@@ -94,5 +94,18 @@ describe("guessWord action dispatcher", () => {
         expect(newState).toEqual(expectedState);
       });
     });
+  });
+});
+
+describe("'giveUp' action creator", () => {
+  let store, newState;
+  const preloadedState = { giveUp: false, success: false };
+  beforeEach(() => {
+    store = storeFactory(preloadedState);
+    store.dispatch(giveUp());
+    newState = store.getState();
+  });
+  test("updates 'gaveUp' state to true once executed", () => {
+    expect(newState.gaveUp).toBe(true);
   });
 });
