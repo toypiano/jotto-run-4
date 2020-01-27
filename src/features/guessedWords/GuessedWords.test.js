@@ -40,7 +40,7 @@ describe("no words guessed previously", () => {
   });
 });
 
-describe("some words guessed previously", () => {
+describe("some words guessed", () => {
   let wrapper;
   const guessedWords = [
     { guessedWord: "polly", letterMatchCount: 2 }
@@ -62,4 +62,7 @@ describe("some words guessed previously", () => {
     );
     expect(guessedWordsSection.length).toBe(1);
   });
+  test("renders correct number of guessed words", () => {});
+  test("renders 'guess index' column", () => {});
+  test("renders correct index next to guessed word", () => {});
 });
