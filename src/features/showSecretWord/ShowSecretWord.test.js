@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import ShowSecretWord from "./ShowSecretWord";
 import { findByTestAttr, checkProps } from "../../../test/testUtils";
 
-const defaultProps = { show: false };
+const defaultProps = { show: false, secretWord: "piano" };
 
 /**
  * Factory function to create a ShallowWrapper for the ShowSecretWord component
@@ -25,7 +25,7 @@ describe("render", () => {
       wrapper,
       "component-show-secret-word"
     );
-    expect(component).toBe(1);
+    expect(component.length).toBe(1);
   });
   test("renders no text when props.show is false", () => {
     const component = findByTestAttr(
@@ -45,7 +45,7 @@ describe("render", () => {
 });
 
 test("does not throw warning with expected props", () => {
-  const expectedProps = { show: true };
+  const expectedProps = { show: true, secretWord: "piano" };
   const error = checkProps(ShowSecretWord, expectedProps);
   expect(error).toBe(undefined);
 });
