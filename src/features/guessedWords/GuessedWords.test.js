@@ -43,7 +43,9 @@ describe("no words guessed previously", () => {
 describe("some words guessed", () => {
   let wrapper;
   const guessedWords = [
-    { guessedWord: "polly", letterMatchCount: 2 }
+    { guessedWord: "polly", letterMatchCount: 2 },
+    { guessedWord: "molly", letterMatchCount: 1 },
+    { guessedWord: "dolly", letterMatchCount: 1 }
   ];
   beforeEach(() => {
     wrapper = setup({ guessedWords });
@@ -62,7 +64,20 @@ describe("some words guessed", () => {
     );
     expect(guessedWordsSection.length).toBe(1);
   });
-  test("renders correct number of guessed words", () => {});
-  test("renders 'guess index' column", () => {});
-  test("renders correct index next to guessed word", () => {});
+  test("renders correct number of guessed words", () => {
+    const guessedWord = findByTestAttr(wrapper, "guessed-word");
+    expect(guessedWord.length).toBe(guessedWords.length);
+  });
+  test("renders 'guess index' column", () => {
+    const guessIndex = findByTestAttr(wrapper, "guess-index");
+    expect(guessIndex.length).toBeGreaterThan(0);
+  });
+  test("renders correct index next to guessed word", () => {
+    const guessIndex = findByTestAttr(wrapper, "guess-index");
+    const indexes = guessIndex.map(wrapper => wrapper.text());
+    const expected = guessedWords.map((word, index) =>
+      (index + 1).toString()
+    );
+    expect(indexes).toEqual(expected);
+  });
 });

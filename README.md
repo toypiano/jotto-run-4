@@ -67,3 +67,16 @@ test("updates 'secretWord' state correctly upon execution", () => {
         userReducer.test.js
         // (state.user)
 ```
+
+- When you get anything from DOM, it is a **string**. Don't forget to convert them.
+
+```js
+test("renders correct index next to guessed word", () => {
+  const guessIndex = findByTestAttr(wrapper, "guess-index");
+  const indexes = guessIndex.map(wrapper => wrapper.text());
+  const expected = guessedWords.map((word, index) =>
+    (index + 1).toString()
+  );
+  expect(indexes).toEqual(expected);
+});
+```

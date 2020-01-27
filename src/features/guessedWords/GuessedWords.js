@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 const GuessedWords = props => {
   const guessedWordRows = props.guessedWords.map((v, i) => {
     return (
-      <tr key={v.guessedWord + i}>
+      <tr data-test="guessed-word" key={v.guessedWord + i}>
+        <td data-test="guess-index">{i + 1}</td>
         <td>{v.guessedWord}</td>
         <td>{v.letterMatchCount}</td>
       </tr>
@@ -15,6 +16,7 @@ const GuessedWords = props => {
     <table className="table table-sm">
       <thead className="thead-light">
         <tr>
+          <th>#</th>
           <th>Guess</th>
           <th>Matching Letters</th>
         </tr>
