@@ -142,7 +142,7 @@ describe("'giveUp' action creator call", () => {
     giveUpButton.simulate("click");
   });
   test("'giveUp' action creator runs when 'Give up' button is clicked", () => {
-    const giveUpCallCount = giveUpMock.mock.calls[0][0];
+    const giveUpCallCount = giveUpMock.mock.calls.length;
     expect(giveUpCallCount).toBe(1);
   });
 });

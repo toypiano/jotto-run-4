@@ -38,6 +38,14 @@ class Guess extends Component {
         >
           Submit
         </button>
+        <button
+          type="button"
+          data-test="give-up-button"
+          className="btn btn-danger mt-2 ml-2"
+          onClick={this.props.giveUp}
+        >
+          Give Up
+        </button>
       </form>
     );
     return <div data-test="component-guess">{form}</div>;
