@@ -15,7 +15,8 @@ describe("guessWord action dispatcher", () => {
   const incorrectGuessedWord = "bongo";
   const secretWord = "piano";
   const moreProps = {
-    serverError: false
+    serverError: false,
+    gaveUp: false
   };
 
   describe("no previously guessed word(first submit)", () => {
@@ -99,7 +100,7 @@ describe("guessWord action dispatcher", () => {
 
 describe("'giveUp' action creator", () => {
   let store, newState;
-  const preloadedState = { giveUp: false, success: false };
+  const preloadedState = { gaveUp: false, success: false };
   beforeEach(() => {
     store = storeFactory(preloadedState);
     store.dispatch(giveUp());

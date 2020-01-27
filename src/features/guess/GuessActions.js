@@ -3,6 +3,7 @@ import { getLetterMatchCount } from "../../common/utils";
 // action types
 export const GUESS_SUBMITTED = "guess/guessSubmitted";
 export const GUESS_SUCCESS = "guess/guessSuccess";
+export const GAVE_UP = "guess/gaveUp";
 
 /**
  * Returns Redux Thunk function that dispatches GUESS_SUBMITTED action
@@ -35,5 +36,5 @@ export const guessWord = guessedWord => {
 };
 
 export const giveUp = () => {
-  return {};
+  return { type: GAVE_UP };
 };
