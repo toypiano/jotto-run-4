@@ -43,7 +43,9 @@ test("'fetchSecretWord' runs on App mount", () => {
   const fetchSecretWordMock = jest.fn();
   const props = {
     success: false,
-    guessedWords: []
+    guessedWords: [],
+    gaveUp: false,
+    secretWord: "piano"
   };
   const wrapper = shallow(
     <App {...props} fetchSecretWord={fetchSecretWordMock} />
