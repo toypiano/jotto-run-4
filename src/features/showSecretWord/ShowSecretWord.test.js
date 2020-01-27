@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import ShowSecretWord from "./ShowSecretWord";
+import { findByTestAttr, checkProps } from "../../../test/testUtils";
 
 const defaultProps = { show: false };
 
@@ -15,9 +16,36 @@ const setup = (props = {}) => {
 };
 
 describe("render", () => {
-  test("renders without error", () => {});
-  test("renders no text when props.show is false", () => {});
-  test("renders text including secretWord from state", () => {});
+  let wrapper;
+  beforeEach(() => {
+    wrapper = setup();
+  });
+  test("renders without error", () => {
+    const component = findByTestAttr(
+      wrapper,
+      "component-show-secret-word"
+    );
+    expect(component).toBe(1);
+  });
+  test("renders no text when props.show is false", () => {
+    const component = findByTestAttr(
+      wrapper,
+      "component-show-secret-word"
+    );
+    expect(component.text().length).toBe(0);
+  });
+  test("renders text including secretWord from state", () => {
+    const wrapper = setup({ show: true, secretWord: "piano" });
+    const component = findByTestAttr(
+      wrapper,
+      "component-show-secret-word"
+    );
+    expect(component.text()).toContain("piano");
+  });
 });
 
-test("does not throw warning with expected props", () => {});
+test("does not throw warning with expected props", () => {
+  const expectedProps = { show: true };
+  const error = checkProps(ShowSecretWord, expectedProps);
+  expect(error).toBe(undefined);
+});

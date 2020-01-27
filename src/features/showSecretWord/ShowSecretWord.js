@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ShowSecretWord = props => {
-  return <div></div>;
+  return <div data-test=""></div>;
 };
 
 ShowSecretWord.propTypes = {};
