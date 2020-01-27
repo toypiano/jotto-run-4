@@ -29,11 +29,11 @@ const GuessedWords = props => {
         <h3>Guessed Words</h3>
         {table}
       </div>
-    ) : (
+    ) : !props.gaveUp ? (
       <div data-test="guess-instructions">
         Please guess a five-letter word!
       </div>
-    );
+    ) : null;
 
   return <div data-test="component-guessed-words">{content}</div>;
 };

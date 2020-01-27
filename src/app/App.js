@@ -4,6 +4,7 @@ import Congrats from "../features/congrats/Congrats";
 import GuessContainer from "../features/guess/GuessContainer";
 import GuessedWords from "../features/guessedWords/GuessedWords";
 import NewWord from "../features/newWord/NewWord";
+import ShowSecretWord from "../features/showSecretWord/ShowSecretWord";
 
 class App extends Component {
   componentDidMount() {
@@ -17,12 +18,19 @@ class App extends Component {
         </header>
         <main>
           <Congrats success={this.props.success} />
-          <GuessContainer />
+          <ShowSecretWord
+            secretWord={this.props.secretWord}
+            show={this.props.gaveUp}
+          />
           <NewWord
-            show={this.props.success}
+            show={this.props.success || this.props.gaveUp}
             getNewWord={this.props.resetGame}
           />
-          <GuessedWords guessedWords={this.props.guessedWords} />
+          {!this.props.gaveUp && <GuessContainer />}
+          <GuessedWords
+            guessedWords={this.props.guessedWords}
+            gaveUp={this.props.gaveUp}
+          />
         </main>
       </div>
     );

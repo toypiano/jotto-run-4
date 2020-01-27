@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 const ShowSecretWord = props => {
   const message = (
     <p className="alert alert-info">
-      The secret word is {props.secretWord}. Let's try again!
+      The secret word is <strong>{props.secretWord}</strong>. Let's
+      try again!
     </p>
   );
   return (

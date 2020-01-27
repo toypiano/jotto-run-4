@@ -4,9 +4,11 @@ import App from "./App";
 import { fetchSecretWord } from "./AppActions";
 import { resetGame } from "../features/newWord/NewWordActions";
 
-const mapState = ({ success, guessedWords }) => ({
+const mapState = ({ success, guessedWords, gaveUp, secretWord }) => ({
   success,
-  guessedWords
+  guessedWords,
+  gaveUp,
+  secretWord
 });
 
 const actionCreators = {
