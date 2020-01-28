@@ -7,6 +7,7 @@ import NewWord from "../features/newWord/NewWord";
 import ShowSecretWord from "../features/showSecretWord/ShowSecretWord";
 import ServerError from "../features/serverError/ServerError";
 import EnterWordButton from "../features/enterWord/EnterWordButton";
+import EnterWordForm from "../features/enterWord/EnterWordForm";
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +16,8 @@ class App extends Component {
   render() {
     const main = this.props.serverError ? (
       <ServerError errorMessage={this.props.errorMessage} />
+    ) : this.props.enterWordStatus === "inProgress" ? (
+      <EnterWordForm submitUserWord={this.props.submitUserWord} />
     ) : (
       <main>
         <Congrats success={this.props.success} />
@@ -28,6 +31,7 @@ class App extends Component {
         />
         <EnterWordButton
           show={this.props.success || this.props.gaveUp}
+          enterWordForm={this.props.enterWordForm}
         />
         {!this.props.gaveUp && <GuessContainer />}
         <GuessedWords

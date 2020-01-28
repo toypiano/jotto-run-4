@@ -6,6 +6,7 @@ const EnterWordButton = props => {
     <button
       data-test="component-enter-word-button"
       className="btn btn-outline-success"
+      onClick={props.enterWordForm}
     >
       Enter Word
     </button>

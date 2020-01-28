@@ -5,6 +5,7 @@ import secretWordReducer from "./secretWordReducer";
 import serverErrorReducer from "./serverErrorReducer";
 import gaveUpReducer from "../features/guess/gaveUpReducer";
 import errorMessageReducer from "./errorMessageReducer";
+import enterWordStatusReducer from "../features/enterWord/enterWordStatusReducer";
 
 export default combineReducers({
   success: successReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   secretWord: secretWordReducer,
   serverError: serverErrorReducer,
   gaveUp: gaveUpReducer,
-  errorMessage: errorMessageReducer
+  errorMessage: errorMessageReducer,
+  enterWordStatus: enterWordStatusReducer
 });

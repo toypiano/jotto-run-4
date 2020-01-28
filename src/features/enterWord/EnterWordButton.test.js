@@ -41,6 +41,7 @@ describe("render", () => {
       wrapper,
       "component-enter-word-button"
     );
+    expect(component.text().length).toBeGreaterThan(0);
   });
 });
 
