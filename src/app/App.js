@@ -6,6 +6,7 @@ import GuessedWords from "../features/guessedWords/GuessedWords";
 import NewWord from "../features/newWord/NewWord";
 import ShowSecretWord from "../features/showSecretWord/ShowSecretWord";
 import ServerError from "../features/serverError/ServerError";
+import EnterWordButton from "../features/enterWord/EnterWordButton";
 
 class App extends Component {
   componentDidMount() {
@@ -24,6 +25,9 @@ class App extends Component {
         <NewWord
           show={this.props.success || this.props.gaveUp}
           getNewWord={this.props.resetGame}
+        />
+        <EnterWordButton
+          show={this.props.success || this.props.gaveUp}
         />
         {!this.props.gaveUp && <GuessContainer />}
         <GuessedWords

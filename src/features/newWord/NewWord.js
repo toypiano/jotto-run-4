@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// TODO: return button OR div to display inline
 const NewWord = props => {
   return (
     <div data-test="component-new-word">
