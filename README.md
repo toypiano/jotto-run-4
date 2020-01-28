@@ -80,3 +80,19 @@ test("renders correct index next to guessed word", () => {
   expect(indexes).toEqual(expected);
 });
 ```
+
+- Extract server error message from axios response object
+
+```js
+// errorMessageReducer.js
+export default (state = null, action) => {
+  switch (action.type) {
+    case FETCH_WORD_FAIL:
+      return action.error.response.data.message;
+    case FETCH_WORD_SUCCESS:
+      return null;
+    default:
+      return state;
+  }
+};
+```
