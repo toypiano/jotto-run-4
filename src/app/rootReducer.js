@@ -4,11 +4,13 @@ import successReducer from "../features/guess/successReducer";
 import secretWordReducer from "./secretWordReducer";
 import serverErrorReducer from "./serverErrorReducer";
 import gaveUpReducer from "../features/guess/gaveUpReducer";
+import errorMessageReducer from "./errorMessageReducer";
 
 export default combineReducers({
   success: successReducer,
   guessedWords: guessedWordsReducer,
   secretWord: secretWordReducer,
   serverError: serverErrorReducer,
-  gaveUp: gaveUpReducer
+  gaveUp: gaveUpReducer,
+  errorMessage: errorMessageReducer
 });

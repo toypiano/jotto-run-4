@@ -13,7 +13,7 @@ class App extends Component {
   }
   render() {
     const main = this.props.serverError ? (
-      <ServerError />
+      <ServerError errorMessage={this.props.errorMessage} />
     ) : (
       <main>
         <Congrats success={this.props.success} />

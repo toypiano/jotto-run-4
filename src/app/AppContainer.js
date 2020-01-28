@@ -9,13 +9,15 @@ const mapState = ({
   guessedWords,
   gaveUp,
   secretWord,
-  serverError
+  serverError,
+  errorMessage
 }) => ({
   success,
   guessedWords,
   gaveUp,
   secretWord,
-  serverError
+  serverError,
+  errorMessage
 });
 
 const actionCreators = {
